@@ -9,6 +9,9 @@ const io = require("socket.io")(server, {
   },
 });
 
+dotenv.config();
+const PORT = process.env.PORT || 5000;
+
 const users = [];
 
 io.on("connection", (socket) => {
@@ -65,4 +68,4 @@ function getPrivateRoom(user1, user2) {
   return [user1, user2].sort().join("-");
 }
 
-server.listen(5000, () => console.log("Server is running on port 5000"));
+server.listen(PORT, () => console.log("Server is running on port 5000"));
